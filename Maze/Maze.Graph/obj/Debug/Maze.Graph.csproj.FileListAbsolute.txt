@@ -1,0 +1,10 @@
+c:\users\carlos\documents\visual studio 2013\Projects\Maze\Maze.Graph\bin\Debug\Maze.Graph.dll
+c:\users\carlos\documents\visual studio 2013\Projects\Maze\Maze.Graph\bin\Debug\Maze.Graph.pdb
+c:\users\carlos\documents\visual studio 2013\Projects\Maze\Maze.Graph\obj\Debug\Maze.Graph.csprojResolveAssemblyReference.cache
+c:\users\carlos\documents\visual studio 2013\Projects\Maze\Maze.Graph\obj\Debug\Maze.Graph.dll
+c:\users\carlos\documents\visual studio 2013\Projects\Maze\Maze.Graph\obj\Debug\Maze.Graph.pdb
+C:\Users\Carlos\Documents\CETYS_Proyectos\IA\Maze\Maze.Graph\bin\Debug\Maze.Graph.dll
+C:\Users\Carlos\Documents\CETYS_Proyectos\IA\Maze\Maze.Graph\bin\Debug\Maze.Graph.pdb
+C:\Users\Carlos\Documents\CETYS_Proyectos\IA\Maze\Maze.Graph\obj\Debug\Maze.Graph.csprojResolveAssemblyReference.cache
+C:\Users\Carlos\Documents\CETYS_Proyectos\IA\Maze\Maze.Graph\obj\Debug\Maze.Graph.dll
+C:\Users\Carlos\Documents\CETYS_Proyectos\IA\Maze\Maze.Graph\obj\Debug\Maze.Graph.pdb

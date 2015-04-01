@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
+  <Asset Type="Pipeline:BuildItemCollection">
+    <BuildSuccessful>true</BuildSuccessful>
+    <Settings>
+      <ContentProjectGUID>{A278A49D-4583-4A0C-ADDC-840DB281D101}</ContentProjectGUID>
+      <TargetPlatform>Windows</TargetPlatform>
+      <TargetProfile>Reach</TargetProfile>
+      <BuildConfiguration>Debug</BuildConfiguration>
+      <CompressContent>false</CompressContent>
+      <RootDirectory>C:\Users\Carlos\Documents\CETYS_Proyectos\IA\Maze\Maze.App\Maze.AppContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Carlos\Documents\CETYS_Proyectos\IA\Maze\Maze.App\Maze.App\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Carlos\Documents\CETYS_Proyectos\IA\Maze\Maze.App\Maze.App\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Carlos\Documents\CETYS_Proyectos\IA\Maze\Maze.App\Maze.App\bin\x86\Debug\Content\</OutputDirectory>
+    </Settings>
+    <Assemblies>
+      <Assembly>
+        <Key>C:\windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2015-02-13T17:40:27.6667762-08:00</Value>
+      </Assembly>
+    </Assemblies>
+  </Asset>
+</XnaContent>

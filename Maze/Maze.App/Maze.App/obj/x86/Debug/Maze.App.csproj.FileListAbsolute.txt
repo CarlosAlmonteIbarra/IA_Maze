@@ -1,0 +1,6 @@
+C:\Users\Carlos\Documents\CETYS_Proyectos\IA\Maze\Maze.App\Maze.App\bin\x86\Debug\Maze.App.exe
+C:\Users\Carlos\Documents\CETYS_Proyectos\IA\Maze\Maze.App\Maze.App\bin\x86\Debug\Maze.App.pdb
+C:\Users\Carlos\Documents\CETYS_Proyectos\IA\Maze\Maze.App\Maze.App\obj\x86\Debug\Maze.App.csprojResolveAssemblyReference.cache
+C:\Users\Carlos\Documents\CETYS_Proyectos\IA\Maze\Maze.App\Maze.App\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Carlos\Documents\CETYS_Proyectos\IA\Maze\Maze.App\Maze.App\obj\x86\Debug\Maze.App.exe
+C:\Users\Carlos\Documents\CETYS_Proyectos\IA\Maze\Maze.App\Maze.App\obj\x86\Debug\Maze.App.pdb
