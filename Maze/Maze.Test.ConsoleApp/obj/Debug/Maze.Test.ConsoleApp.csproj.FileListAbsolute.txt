@@ -1,0 +1,9 @@
+C:\Users\Carlos\Documents\CETYS_Proyectos\IA\Maze\Maze.Test.ConsoleApp\bin\Debug\Maze.Test.ConsoleApp.exe
+C:\Users\Carlos\Documents\CETYS_Proyectos\IA\Maze\Maze.Test.ConsoleApp\bin\Debug\Maze.Test.ConsoleApp.pdb
+C:\Users\Carlos\Documents\CETYS_Proyectos\IA\Maze\Maze.Test.ConsoleApp\bin\Debug\Maze.Engine.dll
+C:\Users\Carlos\Documents\CETYS_Proyectos\IA\Maze\Maze.Test.ConsoleApp\bin\Debug\Maze.Graph.dll
+C:\Users\Carlos\Documents\CETYS_Proyectos\IA\Maze\Maze.Test.ConsoleApp\bin\Debug\Maze.Engine.pdb
+C:\Users\Carlos\Documents\CETYS_Proyectos\IA\Maze\Maze.Test.ConsoleApp\bin\Debug\Maze.Graph.pdb
+C:\Users\Carlos\Documents\CETYS_Proyectos\IA\Maze\Maze.Test.ConsoleApp\obj\Debug\Maze.Test.ConsoleApp.csprojResolveAssemblyReference.cache
+C:\Users\Carlos\Documents\CETYS_Proyectos\IA\Maze\Maze.Test.ConsoleApp\obj\Debug\Maze.Test.ConsoleApp.exe
+C:\Users\Carlos\Documents\CETYS_Proyectos\IA\Maze\Maze.Test.ConsoleApp\obj\Debug\Maze.Test.ConsoleApp.pdb

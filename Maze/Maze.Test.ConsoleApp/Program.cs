@@ -6,7 +6,7 @@ using Maze.Engine;
 using Maze.Graph;
 using Maze.Graph.Algorithms;
 
-namespace Maze.Testing
+namespace Maze.Test.ConsoleApp
 {
     class Program
     {
