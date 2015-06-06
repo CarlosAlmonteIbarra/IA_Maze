@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using Maze.Engine;
 
 namespace Maze.Test.XNAApp
 {
@@ -18,6 +19,8 @@ namespace Maze.Test.XNAApp
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        private GraphicsEngine _graphicsEngine;
+        private LevelWorkflow _game;
 
         public Game1()
         {
@@ -33,8 +36,6 @@ namespace Maze.Test.XNAApp
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
-
             base.Initialize();
         }
 
@@ -46,8 +47,10 @@ namespace Maze.Test.XNAApp
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            // TODO: use this.Content to load your game content here
+            _game = new LevelWorkflow(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
+            _game.OnLevelFinished += this.LevelTransition;
+            _game.OnGameFinished += this.ReturnToManu;
+            _graphicsEngine = new GraphicsEngine(graphics, spriteBatch, _game.CurrentLevel);
         }
 
         /// <summary>
@@ -70,7 +73,16 @@ namespace Maze.Test.XNAApp
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            // TODO: Add your update logic here
+            if (Keyboard.GetState().IsKeyDown(Keys.Right))
+                _game.CurrentLevel.MoveRight();
+            else if (Keyboard.GetState().IsKeyDown(Keys.Left))
+                _game.CurrentLevel.MoveLeft();
+            else if (Keyboard.GetState().IsKeyDown(Keys.Up))
+                _game.CurrentLevel.MoveUp();
+            else if (Keyboard.GetState().IsKeyDown(Keys.Down))
+                _game.CurrentLevel.MoveDown();
+
+            _game.CurrentLevel.Tick();
 
             base.Update(gameTime);
         }
@@ -81,11 +93,25 @@ namespace Maze.Test.XNAApp
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            // TODO: Add your drawing code here
-
+            GraphicsDevice.Clear(Color.Black);
+            
+            GraphicsDevice.Clear(Color.Black);
+            spriteBatch.Begin();
+            _graphicsEngine.Draw();
+            spriteBatch.End();
+            
             base.Draw(gameTime);
         }
+
+        private void LevelTransition()
+        {
+            _graphicsEngine.SetGameObjects(_game.CurrentLevel);
+        }
+
+        private void ReturnToManu()
+        {
+
+        }
+
     }
 }

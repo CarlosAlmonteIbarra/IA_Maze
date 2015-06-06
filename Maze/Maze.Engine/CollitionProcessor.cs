@@ -9,10 +9,10 @@ namespace Maze.Engine
 {
     class CollitionProcessor
     {
-        private GameObject[] _gameObjects;
+        private List<GameObject> _gameObjects;
         private float _width, _height;
 
-        public CollitionProcessor(float width, float height, GameObject[] gameObjects)
+        public CollitionProcessor(float width, float height, List<GameObject> gameObjects)
         {
             _gameObjects = gameObjects;
             _width = width;
@@ -102,7 +102,7 @@ namespace Maze.Engine
             return false;
         }
 
-        public bool IntersectionInX(GameObject a, GameObject b)
+        private bool IntersectionInX(GameObject a, GameObject b)
         {
             float axw = a.X + a.Width;
             float bxw = b.X + b.Width;
@@ -111,11 +111,18 @@ namespace Maze.Engine
             return false;
         }
 
-        public bool IntersectionInY(GameObject a, GameObject b)
+        private bool IntersectionInY(GameObject a, GameObject b)
         {
             float ayh = a.Y + a.Height;
             float byh = b.Y + b.Height;
             if (ayh > b.Y && a.Y < byh || a.Y < b.Y && ayh > byh)
+                return true;
+            return false;
+        }
+
+        public bool Intersection(GameObject a, GameObject b)
+        {
+            if (IntersectionInX(a, b) && IntersectionInY(a, b))
                 return true;
             return false;
         }

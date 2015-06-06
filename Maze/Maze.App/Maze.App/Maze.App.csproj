@@ -74,7 +74,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="MazeGame.cs" />
+    <Compile Include="Game1.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />
@@ -83,10 +83,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Maze.Engine\Maze.Engine.csproj">
-      <Project>{e272ea96-ce90-4763-a8f8-7574ae99b4c4}</Project>
-      <Name>Maze.Engine</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Maze.AppContent\Maze.AppContent.contentproj">
       <Name>Maze.AppContent</Name>
       <XnaReferenceType>Content</XnaReferenceType>
