@@ -11,7 +11,6 @@ namespace Maze.Engine.Objects
         public bool IsEdge, IsOpen;
         public Cell SideA, SideB;
 
-        public Wall() : base(0, 0, 0, 0) { }
         public Wall(float x, float y, float width, float height)
             : base(x, y, width, height) { }
     }

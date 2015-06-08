@@ -13,27 +13,29 @@ namespace Maze.Engine
 
         public Cell[,] Maze { get { return _maze; } }
 
-        public RandomizedPrim(int rows, int columns)
+        public RandomizedPrim(int rows, int columns, float cellSize, float wallThickness)
         {
             _maze = new Cell[rows, columns];
-            SetCells(rows, columns);
+            SetCells(rows, columns, cellSize, wallThickness);
             BuildMaze(rows, columns);
         }
 
-        private void SetCells(int m, int n)
+        private void SetCells(int m, int n, float cellSize, float wallThickness)
         {
+            float x = wallThickness, y = wallThickness; // For GameEnviroment use
             Cell cell = null;
 
             for (int i = 0; i < m; i++)
             {
                 for (int j = 0; j < n; j++)
                 {
-                    cell = _maze[i, j] = new Cell();
-                    
-                    cell.Bottom = new Wall();
+                    cell = _maze[i, j] = new Cell(x, y, cellSize);
+                    x += cellSize + wallThickness;
+
+                    cell.Bottom = new Wall(cell.X - wallThickness, cell.Y + cellSize, (wallThickness*2) + cellSize, wallThickness);
                     if (i == 0) // Top row
                     {
-                        cell.Top = new Wall();
+                        cell.Top = new Wall(cell.X-wallThickness, cell.Y - wallThickness, cellSize + (wallThickness*2), wallThickness);
                         cell.Top.IsEdge = true;
                     }
                     else
@@ -44,11 +46,11 @@ namespace Maze.Engine
                     }
                     if (i == m - 1)
                         cell.Bottom.IsEdge = true;
-                    
-                    cell.Right = new Wall();
+
+                    cell.Right = new Wall(cell.X + cellSize, cell.Y - wallThickness, wallThickness, cellSize + (wallThickness*2));
                     if (j == 0) // First column
                     {
-                        cell.Left = new Wall();
+                        cell.Left = new Wall(cell.X - wallThickness, cell.Y - wallThickness, wallThickness, wallThickness + cellSize);
                         cell.Left.IsEdge = true;
                     }
                     else
@@ -60,6 +62,8 @@ namespace Maze.Engine
                     if (j == n - 1)
                         cell.Right.IsEdge = true;
                 }
+                x = wallThickness;
+                y += cellSize + wallThickness;
             }
         }
 

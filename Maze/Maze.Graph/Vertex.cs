@@ -11,6 +11,7 @@ namespace Maze.Graph
         public bool Visited { get; set; }
         public int Weight { get; set; }
 
+        public Vertex() { Visited = false; }
         public Vertex(string label)
         {
             Label = label;
