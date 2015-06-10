@@ -439,7 +439,7 @@ namespace Maze.App
 
         private void ReturnToManu(EndResult result)
         {
-
+            gameState = GameStates.WinScreen;
         }
 
         private void Delay(int cs)
