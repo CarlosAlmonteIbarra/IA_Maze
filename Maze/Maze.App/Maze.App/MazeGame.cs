@@ -52,7 +52,7 @@ namespace Maze.App
         private GameScreen loseScreen;
         private GameScreen characterScreen;
         private GameScreen creditScreen;
-        private GameScreen protoScreen;
+        private GameScreen memeScreen;
 
         GameStates gameState = GameStates.IntroScreen;
         #endregion
@@ -319,8 +319,18 @@ namespace Maze.App
                     break;
                  case GameStates.GameScreen:
                     if (MediaPlayer.State.Equals(MediaState.Stopped))
-                        MediaPlayer.Play(Content.Load<Song>("Mario"));
+                    {
+                        Delay(300);
+                        MediaPlayer.Play(Content.Load<Song>("Mario"));                        
+                    }
                     break;
+                case GameStates.MemeScreen:
+                    if (CurrentState.IsKeyUp(Keys.Enter) && PreviousState.IsKeyDown(Keys.Enter))
+                    {
+                        gameState = GameStates.GameScreen;
+                    }
+                    break;
+
             }
 
             // TODO: Add your update logic here
@@ -376,6 +386,13 @@ namespace Maze.App
                 _graphicsEngine.Draw();
                 spriteBatch.End();
             }
+
+            if (gameState == GameStates.MemeScreen)
+            {
+                spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.NonPremultiplied);
+                spriteBatch.Draw(memeScreen.ScreenTexture, memeScreen.ScreenFrame, Color.White);
+                spriteBatch.End();
+            }
             // TODO: Add your drawing code here
 
             base.Draw(gameTime);
@@ -383,13 +400,16 @@ namespace Maze.App
 
         private void LevelTransition(EndResult result)
         {
-            //Content.Load<SoundEffect>("sounds\\star");
+            Rectangle fullScreenRectangle = new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
+
             MediaPlayer.Play(Content.Load<Song>("sounds\\star2"));
             Delay(300);
             
             if (result == EndResult.CpuWon)
             {
-
+                MediaPlayer.Play(Content.Load<Song>("sounds\\failure2"));
+                memeScreen = new GameScreen(this,enemy.Meme_AssetName,fullScreenRectangle);
+                gameState = GameStates.MemeScreen;
             }
             else if (result == EndResult.PlayerWon)
             {

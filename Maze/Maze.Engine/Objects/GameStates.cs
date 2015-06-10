@@ -7,6 +7,7 @@
         GameScreen,
         GameOverScreen,
         WinScreen,
-        CreditScreen
+        CreditScreen,
+        MemeScreen
     }
 }
