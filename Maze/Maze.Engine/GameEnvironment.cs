@@ -14,6 +14,7 @@ namespace Maze.Engine
         private Player _player;
         private CPU _cpu;
         private CollitionProcessor _collitionProcessor;
+        private const float RIVAL_SPEED = 0.5f;
 
         public List<GameObject> Walls { get; private set; }
         public Character Player { get { return _player; } }
@@ -42,12 +43,12 @@ namespace Maze.Engine
             Goal = goal;
             ShortestPathStrategy cpuStrategy = new ShortestPathStrategy(builder.MazeGraph, builder.Cells, start, goal);
             x += (columns-1) * (pSize + wallThickness + (pPadding*2));
-            _cpu = new CPU(x, y, pSize, pSize, 1, cpuStrategy);
+            _cpu = new CPU(x, y, pSize, pSize, RIVAL_SPEED, cpuStrategy);
             cpuStrategy.CPU = _cpu;
 
             List<GameObject> gameObjects = new List<GameObject>();
-            gameObjects.Add(_player);
-            gameObjects.Add(_cpu);
+            //gameObjects.Add(_player);
+            //gameObjects.Add(_cpu);
             foreach (GameObject w in Walls)
                 gameObjects.Add(w);
             _collitionProcessor = new CollitionProcessor(windowWidth, windowHeight, gameObjects);

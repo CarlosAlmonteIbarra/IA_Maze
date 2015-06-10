@@ -16,48 +16,45 @@ namespace Maze.App
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private Character _player, _enemy;
+        private GameObject _goal; // star
         private List<GameObject> _walls;
         // temporal:
         private Texture2D _playerTexture, _enemyTexture;
-        private Color[] _playerColor, _enemyColor, _cellColor;
-        private Vector2 _playerPos, _enemyPos, _cellPos;
+        private Texture2D[] _starTextures = new Texture2D[16];
+        private int _starIndex = 0, _starTimer = 0;
+        private const int STAR_SPEED = 150; // ms
+        private Rectangle _playerRect, _enemyRect, _starRect;
 
         public GraphicsEngine(GraphicsDeviceManager gdManager, SpriteBatch spriteBatch, GameEnvironment ge, ContentManager cm)
         {
             _graphics = gdManager;
             _spriteBatch = spriteBatch;
             SetGameObjects(ge, cm);
+            _playerTexture = cm.Load<Texture2D>("Characters\\Felipe\\felipeFace");
+            _enemyTexture = cm.Load<Texture2D>("Characters\\Adan\\adanFace");
+
+            for (int i = 0; i < _starTextures.Length; i++)
+                _starTextures[i] = cm.Load<Texture2D>(string.Format("star\\star{0}", i + 1));
         }
 
         public void SetGameObjects(GameEnvironment ge, ContentManager cm)
         {
             _player = ge.Player;
             _enemy = ge.Enemy;
+            _goal = ge.Goal;
             _walls = ge.Walls;
 
-            _playerTexture = cm.Load<Texture2D>("Characters\\Felipe\\felipeFace");
-            _enemyTexture = cm.Load<Texture2D>("Characters\\Adan\\adanFace");
-            //_playerTexture = new Texture2D(_graphics.GraphicsDevice, (int)_player.Width, (int)_player.Height);
-            //_enemyTexture = new Texture2D(_graphics.GraphicsDevice, (int)_enemy.Width, (int)_enemy.Height);
-
-            _playerColor = new Color[_playerTexture.Width * _playerTexture.Height];
-            _enemyColor = new Color[_enemyTexture.Width * _enemyTexture.Height];
-
-            for (int i = 0; i < _playerColor.Length; i++) _playerColor[i] = Color.Red;
-            for (int i = 0; i < _enemyColor.Length; i++) _enemyColor[i] = Color.Blue;
-
-            _playerPos = new Vector2(_player.X, _player.Y);
-            _enemyPos = new Vector2(_enemy.X, _enemy.Y);
-            //_playerTexture.SetData(_playerColor);
-            //_enemyTexture.SetData(_enemyColor);
+            _playerRect = new Rectangle(0, 0, (int)_player.Width, (int)_player.Height);
+            _enemyRect = new Rectangle(0, 0, (int)_enemy.Width, (int)_enemy.Height);
+            _starRect = new Rectangle((int)_goal.X, (int)_goal.Y, (int)_goal.Width, (int)_goal.Height);
         }
 
         private void RellocateTextures()
         {
-            _playerPos.X = _player.X;
-            _playerPos.Y = _player.Y;
-            _enemyPos.X = _enemy.X;
-            _enemyPos.Y = _enemy.Y;
+            _playerRect.X = (int)_player.X;
+            _playerRect.Y = (int)_player.Y;
+            _enemyRect.X = (int)_enemy.X;
+            _enemyRect.Y = (int)_enemy.Y;
         }
 
         private void DrawCells()
@@ -78,12 +75,22 @@ namespace Maze.App
             }
         }
 
+        private void DrawStar()
+        {
+            _spriteBatch.Draw(_starTextures[_starIndex], _starRect, Color.White);
+            _starIndex = (_starIndex + 1) % _starTextures.Length;
+            _starTimer++;
+        }
+
         public void Draw()
         {
             DrawCells();
             RellocateTextures();
-            _spriteBatch.Draw(_playerTexture, new Rectangle((int)_playerPos.X, (int)_playerPos.Y,(int)_player.Width,(int)_player.Height), Color.White);
-            _spriteBatch.Draw(_enemyTexture, new Rectangle((int)_enemyPos.X, (int)_enemyPos.Y, (int)_enemy.Width, (int)_enemy.Height), Color.White);
+            _spriteBatch.Draw(_playerTexture, _playerRect, Color.White);
+            _spriteBatch.Draw(_enemyTexture, _enemyRect, Color.White);
+            DrawStar();
         }
+        
+
     }
 }

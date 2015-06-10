@@ -27,6 +27,7 @@ namespace Maze.App
         private LevelWorkflow _game;
 
         KeyboardState PreviousState;
+        private int _delayTime, _delayCounter;
         KeyboardState CurrentState;
 
         Color color;
@@ -58,7 +59,7 @@ namespace Maze.App
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            this.graphics.ToggleFullScreen();
+            //this.graphics.ToggleFullScreen();
             font = Content.Load<SpriteFont>("GameFont");
             color = new Color(255, 255, 255);
             base.Initialize();
@@ -109,6 +110,12 @@ namespace Maze.App
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+            if (_delayCounter != _delayTime)
+            {
+                ++_delayCounter;
+                return;
+            }
+
             CurrentState = Keyboard.GetState();
 
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
@@ -249,14 +256,22 @@ namespace Maze.App
             base.Draw(gameTime);
         }
 
-        private void LevelTransition()
+        private void LevelTransition(EndResult result)
         {
+            // reproducir sonido de la estrellita
+            Delay(300);
             _graphicsEngine.SetGameObjects(_game.CurrentLevel, this.Content);
         }
 
-        private void ReturnToManu()
+        private void ReturnToManu(EndResult result)
         {
 
+        }
+
+        private void Delay(int cs)
+        {
+            _delayTime = cs;
+            _delayCounter = 0;
         }
 
     }

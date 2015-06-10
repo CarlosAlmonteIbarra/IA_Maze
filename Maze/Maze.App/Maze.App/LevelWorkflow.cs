@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Maze.App
 {
-    internal delegate void LevelFinishedHandler();
+    internal delegate void LevelFinishedHandler(EndResult result);
 
     class LevelWorkflow
     {
@@ -30,15 +30,15 @@ namespace Maze.App
                 };
             CurrentLevel = _levels[_currentLevelIndex];
             CurrentLevel.OnGameFinish += LevelFinished;
-            OnLevelFinished = () => { };
-            OnGameFinished = () => { };
+            OnLevelFinished = (r) => { };
+            OnGameFinished = (r) => { };
         }
 
         private void NextLevel()
         {
             if (_currentLevelIndex == _levels.Length - 1)
             {
-                OnGameFinished();
+                OnGameFinished(EndResult.PlayerWon);
                 return;
             }
             CurrentLevel = _levels[++_currentLevelIndex];
@@ -57,7 +57,7 @@ namespace Maze.App
                 RestartLeve();
             else
                 NextLevel();
-            OnLevelFinished();
+            OnLevelFinished(result);
         }
 
     }
