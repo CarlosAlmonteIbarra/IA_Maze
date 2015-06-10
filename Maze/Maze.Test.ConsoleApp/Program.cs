@@ -52,7 +52,7 @@ namespace Maze.Test.ConsoleApp
         private static void GenerateMaze()
         {
             int rows = 20, cols = 20;
-            var prim = new RandomizedPrim(rows, cols);
+            var prim = new RandomizedPrim(rows, cols,11,11);
             var maze = prim.Maze;
 
             for (int i = 0; i < rows; i++)
