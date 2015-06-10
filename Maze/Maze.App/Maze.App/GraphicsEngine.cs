@@ -20,14 +20,18 @@ namespace Maze.App
         private Color[] _playerColor, _enemyColor, _cellColor;
         private Vector2 _playerPos, _enemyPos, _cellPos;
 
-        public GraphicsEngine(GraphicsDeviceManager gdManager, SpriteBatch spriteBatch, GameEnvironment gEnviroment)
+        public GraphicsEngine(GraphicsDeviceManager gdManager, SpriteBatch spriteBatch, GameEnvironment ge)
         {
             _graphics = gdManager;
             _spriteBatch = spriteBatch;
+            SetGameObjects(ge);
+        }
 
-            _player = gEnviroment.Player;
-            _enemy = gEnviroment.Enemy;
-            _walls = gEnviroment.Walls;
+        public void SetGameObjects(GameEnvironment ge)
+        {
+            _player = ge.Player;
+            _enemy = ge.Enemy;
+            _walls = ge.Walls;
 
             _playerTexture = new Texture2D(_graphics.GraphicsDevice, (int)_player.Width, (int)_player.Height);
             _enemyTexture = new Texture2D(_graphics.GraphicsDevice, (int)_enemy.Width, (int)_enemy.Height);

@@ -23,8 +23,8 @@ namespace Maze.App
         SpriteBatch spriteBatch;
         SpriteFont font;
 
-        private GameEnvironment _game;
         private GraphicsEngine _graphicsEngine;
+        private LevelWorkflow _game;
 
         KeyboardState PreviousState;
         KeyboardState CurrentState;
@@ -58,6 +58,7 @@ namespace Maze.App
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            this.graphics.ToggleFullScreen();
             font = Content.Load<SpriteFont>("GameFont");
             color = new Color(255, 255, 255);
             base.Initialize();
@@ -71,9 +72,11 @@ namespace Maze.App
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            _game = new GameEnvironment(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
-            _graphicsEngine = new GraphicsEngine(graphics, spriteBatch, _game);
+            
+            _game = new LevelWorkflow(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
+            _game.OnLevelFinished += this.LevelTransition;
+            _game.OnGameFinished += this.ReturnToManu;
+            _graphicsEngine = new GraphicsEngine(graphics, spriteBatch, _game.CurrentLevel);
 
             Electivo = Content.Load<Texture2D>("selector");
             elige = new Rectangle(35, 40, 50, 50);
@@ -86,7 +89,7 @@ namespace Maze.App
             //loseScreen = new GameScreen(this, "You suck!!!", fullScreenRectangle);
             //winScreen = new GameScreen(this, "You win!!!", fullScreenRectangle);
             //protoScreen = new GameScreen(this, "FONDO COMPLETO PROTOMAN", fullScreenRectangle);
-
+            
             // TODO: use this.Content to load your game content here
         }
 
@@ -173,15 +176,15 @@ namespace Maze.App
                     this.Exit();
 
                 if (Keyboard.GetState().IsKeyDown(Keys.Right))
-                    _game.MoveRight();
+                    _game.CurrentLevel.MoveRight();
                 else if (Keyboard.GetState().IsKeyDown(Keys.Left))
-                    _game.MoveLeft();
+                    _game.CurrentLevel.MoveLeft();
                 else if (Keyboard.GetState().IsKeyDown(Keys.Up))
-                    _game.MoveUp();
+                    _game.CurrentLevel.MoveUp();
                 else if (Keyboard.GetState().IsKeyDown(Keys.Down))
-                    _game.MoveDown();
+                    _game.CurrentLevel.MoveDown();
 
-                _game.Tick();
+                _game.CurrentLevel.Tick();
             }
 
             switch (gameState)
@@ -245,5 +248,16 @@ namespace Maze.App
 
             base.Draw(gameTime);
         }
+
+        private void LevelTransition()
+        {
+            _graphicsEngine.SetGameObjects(_game.CurrentLevel);
+        }
+
+        private void ReturnToManu()
+        {
+
+        }
+
     }
 }
