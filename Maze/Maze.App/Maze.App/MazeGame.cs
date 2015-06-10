@@ -317,7 +317,12 @@ namespace Maze.App
                     if (MediaPlayer.State.Equals(MediaState.Stopped))
                         MediaPlayer.Play(Content.Load<Song>("sounds\\menu"));
                     break;
+                 case GameStates.GameScreen:
+                    if (MediaPlayer.State.Equals(MediaState.Stopped))
+                        MediaPlayer.Play(Content.Load<Song>("Mario"));
+                    break;
             }
+
             // TODO: Add your update logic here
             PreviousState = CurrentState;
             base.Update(gameTime);
@@ -381,11 +386,7 @@ namespace Maze.App
             //Content.Load<SoundEffect>("sounds\\star");
             MediaPlayer.Play(Content.Load<Song>("sounds\\star2"));
             Delay(300);
-            MediaPlayer.Play(Content.Load<Song>("Mario"));
-            if (MediaPlayer.State.Equals(MediaState.Stopped))
-            {
-
-            }
+            
             if (result == EndResult.CpuWon)
             {
 
