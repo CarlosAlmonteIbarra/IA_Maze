@@ -59,11 +59,6 @@ namespace Maze.Engine
             OnGameFinish = new GameFinishHandler(CheckResult);
         }
 
-        public void SetSpeed(double speed)
-        {
-            _cpu.SetSpeed(speed);
-        }
-
         public void Tick()
         {
             _cpu.ApplyStrategy();
@@ -108,7 +103,7 @@ namespace Maze.Engine
 
         private void CheckResult(EndResult result)
         {
-
+            RIVAL_SPEED += 0.25f;
         }
 
     }

@@ -13,7 +13,6 @@ namespace Maze.App
         private GameEnvironment[] _levels;
         private int _currentLevelIndex = 0;
         private int _width, _height;
-        private double speed = 0.5;
         public GameEnvironment CurrentLevel { get; private set; }
         public event LevelFinishedHandler OnLevelFinished, OnGameFinished;
 
@@ -37,15 +36,11 @@ namespace Maze.App
 
         private void NextLevel()
         {
-            speed += 0.5;
             if (_currentLevelIndex == _levels.Length - 1)
             {
                 OnGameFinished(EndResult.PlayerWon);
-                speed = 0.5;
-                CurrentLevel.SetSpeed(speed);
                 return;
             }
-            CurrentLevel.SetSpeed(speed);
             CurrentLevel = _levels[++_currentLevelIndex];
             CurrentLevel.OnGameFinish += LevelFinished;
         }

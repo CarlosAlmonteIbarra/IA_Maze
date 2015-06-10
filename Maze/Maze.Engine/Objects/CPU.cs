@@ -17,11 +17,6 @@ namespace Maze.Engine.Objects
             _strategy = strategy;
         }
 
-        public void SetSpeed(double speed)
-        {
-            Speed = (float) speed;
-        }
-
         public void ApplyStrategy()
         {
             _strategy.Operate();
