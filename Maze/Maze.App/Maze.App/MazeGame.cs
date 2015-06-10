@@ -27,6 +27,8 @@ namespace Maze.App
         private SpriteFont letritas;
         private SpriteFont cetys;
 
+        private int countBeaten = 0;
+
         private CharacterFactory characterFactory = new CharacterFactory();
         private EnemyFactory enemyFactory = new EnemyFactory();
 
@@ -294,6 +296,7 @@ namespace Maze.App
                     if (CurrentState.IsKeyUp(Keys.Enter) && PreviousState.IsKeyDown(Keys.Enter))
                     {
                         gameState = GameStates.CharacterScreen;
+                        MediaPlayer.Play(Content.Load<Song>("sounds\\character_select2"));
                     }
                     break;
 
@@ -302,10 +305,15 @@ namespace Maze.App
                     {
                         if (character.Name != null)
                         {
+                            enemy = enemyFactory.CreateEnemy("carol");
+                            Delay(300);
                             _graphicsEngine = new GraphicsEngine(graphics, spriteBatch, _game.CurrentLevel, this.Content, character, enemy);
+                            MediaPlayer.Play(Content.Load<Song>("Mario"));
                             gameState = GameStates.GameScreen;
                         }
                     }
+                    if (MediaPlayer.State.Equals(MediaState.Stopped))
+                        MediaPlayer.Play(Content.Load<Song>("sounds\\menu"));
                     break;
             }
             // TODO: Add your update logic here
@@ -368,15 +376,40 @@ namespace Maze.App
 
         private void LevelTransition(EndResult result)
         {
-            //Reproducir sonido de estrellita
+            //Content.Load<SoundEffect>("sounds\\star");
+            MediaPlayer.Play(Content.Load<Song>("sounds\\star2"));
             Delay(300);
+            MediaPlayer.Play(Content.Load<Song>("Mario"));
+            if (MediaPlayer.State.Equals(MediaState.Stopped))
+            {
+
+            }
             if (result == EndResult.CpuWon)
             {
-                
+
             }
             else if (result == EndResult.PlayerWon)
             {
-                
+                countBeaten++;
+            }
+
+            switch (countBeaten)
+            {
+                case 0:
+                    enemy = enemyFactory.CreateEnemy("carol");
+                    break;
+                case 1:
+                    enemy = enemyFactory.CreateEnemy("ricky");
+                    break;
+                case 2:
+                    enemy = enemyFactory.CreateEnemy("fabian");
+                    break;
+                case 3:
+                    enemy = enemyFactory.CreateEnemy("adan");
+                    break;
+                default:
+                    enemy = enemyFactory.CreateEnemy("adan");
+                    break;
             }
             _graphicsEngine.SetGameObjects(_game.CurrentLevel, this.Content, character, enemy);
         }

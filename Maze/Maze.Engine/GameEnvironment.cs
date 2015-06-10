@@ -14,7 +14,8 @@ namespace Maze.Engine
         private Player _player;
         private CPU _cpu;
         private CollitionProcessor _collitionProcessor;
-        private const float RIVAL_SPEED = 0.5f;
+        private static float RIVAL_SPEED = 0.5f;
+
 
         public List<GameObject> Walls { get; private set; }
         public Character Player { get { return _player; } }
@@ -33,6 +34,7 @@ namespace Maze.Engine
             
             float pSize = size * 0.80f;
             float pPadding = (size - pSize) / 2;
+
             float y = Walls[1].Y + wallThickness + pPadding;
             float x = wallThickness + pPadding;
 
@@ -55,6 +57,11 @@ namespace Maze.Engine
             cpuStrategy.CollitionProcessor = _collitionProcessor;
 
             OnGameFinish = new GameFinishHandler(CheckResult);
+        }
+
+        public void SetSpeed(double speed)
+        {
+            _cpu.SetSpeed(speed);
         }
 
         public void Tick()

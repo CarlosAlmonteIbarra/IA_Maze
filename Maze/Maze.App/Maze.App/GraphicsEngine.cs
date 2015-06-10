@@ -36,8 +36,6 @@ namespace Maze.App
 
             for (int i = 0; i < _starTextures.Length; i++)
                 _starTextures[i] = cm.Load<Texture2D>(string.Format("star\\star{0}", i + 1));
-
-
         }
 
         public void SetGameObjects(GameEnvironment ge, ContentManager cm, Protagonist p, Enemy e)
@@ -48,7 +46,7 @@ namespace Maze.App
             _walls = ge.Walls;
 
             _playerTexture = cm.Load<Texture2D>(p.Face_AssetName);
-            _enemyTexture = cm.Load<Texture2D>("Characters\\Adan\\adanFace");
+            _enemyTexture = cm.Load<Texture2D>(e.Face_AssetName);
 
             _playerRect = new Rectangle(0, 0, (int)_player.Width, (int)_player.Height);
             _enemyRect = new Rectangle(0, 0, (int)_enemy.Width, (int)_enemy.Height);
