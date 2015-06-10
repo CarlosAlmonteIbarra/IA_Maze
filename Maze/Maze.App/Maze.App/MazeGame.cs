@@ -25,6 +25,7 @@ namespace Maze.App
         SpriteBatch spriteBatch;
         SpriteFont font;
         private SpriteFont letritas;
+        private SpriteFont cetys;
 
         private CharacterFactory characterFactory = new CharacterFactory();
         private EnemyFactory enemyFactory = new EnemyFactory();
@@ -68,9 +69,12 @@ namespace Maze.App
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            this.graphics.ToggleFullScreen();
+            graphics.PreferredBackBufferWidth = 1280;
+            graphics.PreferredBackBufferHeight = 720;
+            graphics.ApplyChanges();
             font = Content.Load<SpriteFont>("GameFont");
             letritas = Content.Load<SpriteFont>("Letritas");
+            cetys = Content.Load<SpriteFont>("CETYS");
             color = new Color(255, 255, 255);
             base.Initialize();
         }
@@ -133,9 +137,9 @@ namespace Maze.App
             {
                 if (Keyboard.GetState().IsKeyDown(Keys.Right))
                 {
-                    elige.X += 2;
+                    elige.X += 4;
 
-                    if (elige.X >= 672)
+                    if (elige.X >= 1280)
                     {
                         elige.X = 672;
                         elige.X -= 2;
@@ -143,9 +147,9 @@ namespace Maze.App
                 }
                 else if (Keyboard.GetState().IsKeyDown(Keys.Down))
                 {
-                    elige.Y += 2;
+                    elige.Y += 4;
 
-                    if (elige.Y >= 430)
+                    if (elige.Y >= 720)
                     {
                         elige.Y = 430;
                         elige.Y -= 2;
@@ -153,7 +157,7 @@ namespace Maze.App
                 }
                 else if (Keyboard.GetState().IsKeyDown(Keys.Left))
                 {
-                    elige.X -= 2;
+                    elige.X -= 4;
 
                     if (elige.X <= 1)
                     {
@@ -163,7 +167,7 @@ namespace Maze.App
                 }
                 else if (Keyboard.GetState().IsKeyDown(Keys.Up))
                 {
-                    elige.Y -= 2;
+                    elige.Y -= 4;
 
                     if (elige.Y == 0)
                     {
@@ -172,83 +176,83 @@ namespace Maze.App
                     }
                 }
                 #region Primera Fila
-                if (elige.X >= 105 & elige.X <= 129 & elige.Y >= 70 & elige.Y <= 80)
+                if (elige.X >= 191 & elige.X <= 271 & elige.Y >= 100 & elige.Y <= 150)
                 {
                     character = characterFactory.CreateCharacter("carlita");
                 }
-                if (elige.X >= 179 & elige.X <= 201 & elige.Y >= 70 & elige.Y <= 80)
+                if (elige.X >= 319 & elige.X <= 399 & elige.Y >= 100 & elige.Y <= 150)
                 {
                     character = characterFactory.CreateCharacter("carlos");
                 }
-                if (elige.X >= 251 & elige.X <= 273 & elige.Y >= 70 & elige.Y <= 80)
+                if (elige.X >= 447 & elige.X <= 527 & elige.Y >= 100 & elige.Y <= 150)
                 {
                     character = characterFactory.CreateCharacter("diaz");
                 }
-                if (elige.X >= 325 & elige.X <= 347 & elige.Y >= 70 & elige.Y <= 80)
+                if (elige.X >= 575 & elige.X <= 655 & elige.Y >= 100 & elige.Y <= 150)
                 {
                     character = characterFactory.CreateCharacter("erika");
                 }
-                if (elige.X >= 393 & elige.X <= 419 & elige.Y >= 70 & elige.Y <= 80)
+                if (elige.X >= 707 & elige.X <= 787 & elige.Y >= 100 & elige.Y <= 150)
                 {
                     character = characterFactory.CreateCharacter("felipe");
                 }
-                if (elige.X >= 469 & elige.X <= 491 & elige.Y >= 70 & elige.Y <= 80)
+                if (elige.X >= 835 & elige.X <= 911 & elige.Y >= 100 & elige.Y <= 150)
                 {
                     character = characterFactory.CreateCharacter("ficachi");
                 }
-                if (elige.X >= 539 & elige.X <= 565 & elige.Y >= 70 & elige.Y <= 80)
+                if (elige.X >= 963 & elige.X <= 1047 & elige.Y >= 100 & elige.Y <= 150)
                 {
                     character = characterFactory.CreateCharacter("george");
                 }
                 #endregion
                 #region Segunda Fila
-                if (elige.X >= 105 & elige.X <= 129 & elige.Y >= 130 & elige.Y <= 140)
+                if (elige.X >= 191 & elige.X <= 271 & elige.Y >= 196 & elige.Y <= 240)
                 {
                     character = characterFactory.CreateCharacter("ivansini");
                 }
-                if (elige.X >= 179 & elige.X <= 201 & elige.Y >= 130 & elige.Y <= 140)
+                if (elige.X >= 319 & elige.X <= 399 & elige.Y >= 196 & elige.Y <= 240)
                 {
                     character = characterFactory.CreateCharacter("jose");
                 }
-                if (elige.X >= 251 & elige.X <= 273 & elige.Y >= 130 & elige.Y <= 140)
+                if (elige.X >= 447 & elige.X <= 527 & elige.Y >= 196 & elige.Y <= 240)
                 {
                     character = characterFactory.CreateCharacter("manny");
                 }
-                if (elige.X >= 325 & elige.X <= 347 & elige.Y >= 130 & elige.Y <= 140)
+                if (elige.X >= 575 & elige.X <= 655 & elige.Y >= 196 & elige.Y <= 240)
                 {
                     character = characterFactory.CreateCharacter("martin");
                 }
-                if (elige.X >= 393 & elige.X <= 419 & elige.Y >= 130 & elige.Y <= 140)
+                if (elige.X >= 707 & elige.X <= 787 & elige.Y >= 196 & elige.Y <= 240)
                 {
                     character = characterFactory.CreateCharacter("omar");
                 }
-                if (elige.X >= 469 & elige.X <= 491 & elige.Y >= 130 & elige.Y <= 140)
+                if (elige.X >= 835 & elige.X <= 911 & elige.Y >= 196 & elige.Y <= 240)
                 {
                     character = characterFactory.CreateCharacter("oscar");
                 }
-                if (elige.X >= 539 & elige.X <= 565 & elige.Y >= 130 & elige.Y <= 140)
+                if (elige.X >= 963 & elige.X <= 1047 & elige.Y >= 196 & elige.Y <= 240)
                 {
                     character = characterFactory.CreateCharacter("sarita");
                 }
                 #endregion
                 #region Tercera Fila
-                if (elige.X >= 179 & elige.X <= 201 & elige.Y >= 190 & elige.Y <= 200)
+                if (elige.X >= 319 & elige.X <= 399 & elige.Y >= 284 & elige.Y <= 332)
                 {
                     character = characterFactory.CreateCharacter("stephania");
                 }
-                if (elige.X >= 251 & elige.X <= 273 & elige.Y >= 190 & elige.Y <= 200)
+                if (elige.X >= 447 & elige.X <= 527 & elige.Y >= 284 & elige.Y <= 332)
                 {
                     character = characterFactory.CreateCharacter("chavakane");
                 }
-                if (elige.X >= 325 & elige.X <= 347 & elige.Y >= 190 & elige.Y <= 200)
+                if (elige.X >= 575 & elige.X <= 655 & elige.Y >= 284 & elige.Y <= 332)
                 {
                     character = characterFactory.CreateCharacter("luz");
                 }
-                if (elige.X >= 393 & elige.X <= 419 & elige.Y >= 190 & elige.Y <= 200)
+                if (elige.X >= 707 & elige.X <= 787 & elige.Y >= 284 & elige.Y <= 332)
                 {
                     character = characterFactory.CreateCharacter("shelby");
                 }
-                if (elige.X >= 469 & elige.X <= 491 & elige.Y >= 190 & elige.Y <= 200)
+                if (elige.X >= 835 & elige.X <= 911 & elige.Y >= 284 & elige.Y <= 332)
                 {
                     character = characterFactory.CreateCharacter("turi");
                 }
@@ -325,7 +329,11 @@ namespace Maze.App
                 spriteBatch.End();
 
                 spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.NonPremultiplied);
-                spriteBatch.DrawString(font, "PRESS START", new Vector2(250, 330), color);
+                spriteBatch.DrawString(font, "PRESS START", new Vector2(480, 500), color);
+                spriteBatch.End();
+
+                spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.NonPremultiplied);
+                spriteBatch.DrawString(cetys, "ESCAPE FROM CETYS", new Vector2(300, 410), Color.LimeGreen);
                 spriteBatch.End();
             }
 
@@ -340,8 +348,8 @@ namespace Maze.App
                 if (character.Body_AssetName != null)
                 {
                     spriteBatch.Draw(Content.Load<Texture2D>(character.Body_AssetName),
-                        new Rectangle(105, 260, 120, 143), Color.White);
-                    spriteBatch.DrawString(letritas, character.Name, new Vector2(75,410),color);
+                        new Rectangle(247, 400, 150, 205), Color.White);
+                    spriteBatch.DrawString(letritas, character.Name, new Vector2(130,615),color);
                 }
                 spriteBatch.DrawString(font, elige.X.ToString(), new Vector2(10, 100), color);
                 spriteBatch.DrawString(font, elige.Y.ToString(), new Vector2(10, 150), color);
