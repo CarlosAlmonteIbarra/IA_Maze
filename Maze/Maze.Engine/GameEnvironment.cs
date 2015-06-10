@@ -103,7 +103,8 @@ namespace Maze.Engine
 
         private void CheckResult(EndResult result)
         {
-            RIVAL_SPEED += 0.25f;
+            if (result == EndResult.PlayerWon)
+                RIVAL_SPEED += 0.25f;
         }
 
     }
