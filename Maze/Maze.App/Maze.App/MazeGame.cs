@@ -82,7 +82,7 @@ namespace Maze.App
 
             introScreen = new GameScreen(this, "Prototipo", fullScreenRectangle);
             //creditScreen = new GameScreen(this, "Creditos", fullScreenRectangle);
-            characterScreen = new GameScreen(this, "demo", fullScreenRectangle);
+            characterScreen = new GameScreen(this, "selectScreenFirst", fullScreenRectangle);
             //loseScreen = new GameScreen(this, "You suck!!!", fullScreenRectangle);
             //winScreen = new GameScreen(this, "You win!!!", fullScreenRectangle);
             //protoScreen = new GameScreen(this, "FONDO COMPLETO PROTOMAN", fullScreenRectangle);
