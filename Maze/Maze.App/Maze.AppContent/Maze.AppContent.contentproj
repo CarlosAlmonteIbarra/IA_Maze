@@ -136,7 +136,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Characters\Fabián\fabianMeme.jpg">
+    <Compile Include="Characters\Fabian\fabianMeme.jpg">
       <Name>fabianMeme</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
@@ -181,12 +181,12 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Characters\José\joseFace.png">
+    <Compile Include="Characters\Jose\joseFace.png">
       <Name>joseFace</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Characters\José\joseSelect.png">
+    <Compile Include="Characters\Jose\joseSelect.png">
       <Name>joseSelect</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
@@ -241,12 +241,12 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Characters\Ricky Martin\rickyFace.png">
+    <Compile Include="Characters\Ricky\rickyFace.png">
       <Name>rickyFace</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Characters\Ricky Martin\rickyMeme.jpg">
+    <Compile Include="Characters\Ricky\rickyMeme.jpg">
       <Name>rickyMeme</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
@@ -298,7 +298,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Characters\Fabián\fabianFace.png">
+    <Compile Include="Characters\Fabian\fabianFace.png">
       <Name>fabianFace</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
@@ -309,6 +309,30 @@
       <Name>Mario_Bros</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="selectScreenFinal.png">
+      <Name>selectScreenFinal</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="selectScreenFourth.png">
+      <Name>selectScreenFourth</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="selectScreenThird.png">
+      <Name>selectScreenThird</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="selectScreenSecond.png">
+      <Name>selectScreenSecond</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
