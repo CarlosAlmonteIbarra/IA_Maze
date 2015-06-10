@@ -293,6 +293,8 @@ namespace Maze.App
             switch (gameState)
             {
                 case GameStates.IntroScreen:
+                    if (MediaPlayer.State.Equals(MediaState.Stopped))
+                        MediaPlayer.Play(Content.Load<Song>("sounds\\intro"));
                     if (CurrentState.IsKeyUp(Keys.Enter) && PreviousState.IsKeyDown(Keys.Enter))
                     {
                         gameState = GameStates.CharacterScreen;
