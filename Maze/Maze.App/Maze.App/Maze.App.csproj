@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GraphicsEngine.cs" />
+    <Compile Include="LevelWorkflow.cs" />
     <Compile Include="MazeGame.cs">
       <SubType>Code</SubType>
     </Compile>
