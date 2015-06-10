@@ -331,6 +331,10 @@ namespace Maze.App
                     }
                     break;
                 case GameStates.WinScreen:
+                    if (MediaPlayer.State.Equals(MediaState.Stopped))
+                    {
+                        MediaPlayer.Play(Content.Load<Song>("sounds\\Congratulations!"));
+                    }
                     if (CurrentState.IsKeyUp(Keys.Enter) && PreviousState.IsKeyDown(Keys.Enter))
                     {
                         this.Exit();
@@ -453,7 +457,8 @@ namespace Maze.App
 
         private void ReturnToManu(EndResult result)
         {
-            MediaPlayer.Play(Content.Load<Song>("sounds\\Congratulations!"));
+            if (MediaPlayer.State.Equals(MediaState.Playing))
+                MediaPlayer.Play(Content.Load<Song>("sounds\\Congratulations!"));
             gameState = GameStates.WinScreen;
         }
 
