@@ -11,6 +11,7 @@ namespace Maze.Engine.Characters
 
         public Enemy CreateEnemy(string name)
         {
+            _enemy = new Enemy();
             switch (name)
             {
                 case "adan":
@@ -34,6 +35,9 @@ namespace Maze.Engine.Characters
                     _enemy.Meme_AssetName = "Characters\\Ricky Martin\\rickyMeme";
                     break;
                 default:
+                    _enemy.Name = null;
+                    _enemy.Face_AssetName = null;
+                    _enemy.Meme_AssetName = null;
                     break;
             }
             return _enemy;

@@ -11,6 +11,8 @@ namespace Maze.Engine.Characters
 
         public Character CreateCharacter(string name)
         {
+            _character = new Character();
+
             switch (name)
             {
                 case "carlita":
@@ -27,8 +29,8 @@ namespace Maze.Engine.Characters
                     break;
                 case "chavakane":
                     _character.Name = "Chavakane";
-                    _character.Face_AssetName = "Characters\\Chavakane\\chavakaneFace";
-                    _character.Body_AssetName = "Characters\\Chavakane\\chavakaneSelect";
+                    _character.Face_AssetName = "Characters\\Chavakane\\chavaFace";
+                    _character.Body_AssetName = "Characters\\Chavakane\\chavaSelect";
                     _character.CallName = null;
                     break;
                 case "diaz":
@@ -51,8 +53,8 @@ namespace Maze.Engine.Characters
                     break;
                 case "ficachi":
                     _character.Name = "Ficachi";
-                    _character.Face_AssetName = "Characters\\Ficachi\\ficachiFace";
-                    _character.Body_AssetName = "Characters\\Ficachi\\ficachiSelect";
+                    _character.Face_AssetName = "Characters\\Ficachu\\ficachiFace";
+                    _character.Body_AssetName = "Characters\\Ficachu\\ficachiSelect";
                     _character.CallName = null;
                     break;
                 case "george":
@@ -63,12 +65,12 @@ namespace Maze.Engine.Characters
                     break;
                 case "ivansini":
                     _character.Name = "Ivansini";
-                    _character.Face_AssetName = "Characters\\Ivansini\\ivansiniFace";
-                    _character.Body_AssetName = "Characters\\Ivansini\\ivansiniSelect";
+                    _character.Face_AssetName = "Characters\\Ivansini\\ivanFace";
+                    _character.Body_AssetName = "Characters\\Ivansini\\ivanSelect";
                     _character.CallName = null;
                     break;
                 case "jose":
-                    _character.Name = "José";
+                    _character.Name = "Jose";
                     _character.Face_AssetName = "Characters\\José\\joseFace";
                     _character.Body_AssetName = "Characters\\José\\joseSelect";
                     _character.CallName = null;
@@ -88,19 +90,19 @@ namespace Maze.Engine.Characters
                 case "martin":
                     _character.Name = "Martin";
                     _character.Face_AssetName = "Characters\\Martin\\martinFace";
-                    _character.Body_AssetName = "martinSelect";
+                    _character.Body_AssetName = "Characters\\Martin\\martinSelect";
                     _character.CallName = null;
                     break;
                 case "omar":
-                    _character.Name = "Carlita";
-                    _character.Face_AssetName = "Characters\\Carlita\\carlitaFace";
-                    _character.Body_AssetName = "Characters\\Carlita\\carlitaSelect";
+                    _character.Name = "Omar";
+                    _character.Face_AssetName = "Characters\\Omar\\omarFace";
+                    _character.Body_AssetName = "Characters\\Omar\\omarSelect2";
                     _character.CallName = null;
                     break;
                 case "oscar":
-                    _character.Name = "Omar";
-                    _character.Face_AssetName = "Characters\\Omar\\omarFace";
-                    _character.Body_AssetName = "Characters\\Omar\\omarSelect";
+                    _character.Name = "Oscar";
+                    _character.Face_AssetName = "Characters\\Oscar\\oscarFace";
+                    _character.Body_AssetName = "Characters\\Oscar\\oscarSelect";
                     _character.CallName = null;
                     break;
                 case "sarita":

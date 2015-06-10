@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mime;
 using System.Text;
+using Maze.Engine.Characters;
 using Maze.Engine.Objects;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Maze.Engine;
+using Character = Maze.Engine.Objects.Character;
+using Protagonist = Maze.Engine.Characters.Character;
 
 namespace Maze.App
 {
@@ -25,28 +28,33 @@ namespace Maze.App
         private const int STAR_SPEED = 150; // ms
         private Rectangle _playerRect, _enemyRect, _starRect;
 
-        public GraphicsEngine(GraphicsDeviceManager gdManager, SpriteBatch spriteBatch, GameEnvironment ge, ContentManager cm)
+        public GraphicsEngine(GraphicsDeviceManager gdManager, SpriteBatch spriteBatch, GameEnvironment ge, ContentManager cm, Protagonist p, Enemy e)
         {
             _graphics = gdManager;
             _spriteBatch = spriteBatch;
-            SetGameObjects(ge, cm);
-            _playerTexture = cm.Load<Texture2D>("Characters\\Felipe\\felipeFace");
-            _enemyTexture = cm.Load<Texture2D>("Characters\\Adan\\adanFace");
+            SetGameObjects(ge, cm, p, e);
 
             for (int i = 0; i < _starTextures.Length; i++)
                 _starTextures[i] = cm.Load<Texture2D>(string.Format("star\\star{0}", i + 1));
+
+
         }
 
-        public void SetGameObjects(GameEnvironment ge, ContentManager cm)
+        public void SetGameObjects(GameEnvironment ge, ContentManager cm, Protagonist p, Enemy e)
         {
             _player = ge.Player;
             _enemy = ge.Enemy;
             _goal = ge.Goal;
             _walls = ge.Walls;
 
+            _playerTexture = cm.Load<Texture2D>(p.Face_AssetName);
+            _enemyTexture = cm.Load<Texture2D>("Characters\\Adan\\adanFace");
+
             _playerRect = new Rectangle(0, 0, (int)_player.Width, (int)_player.Height);
             _enemyRect = new Rectangle(0, 0, (int)_enemy.Width, (int)_enemy.Height);
             _starRect = new Rectangle((int)_goal.X, (int)_goal.Y, (int)_goal.Width, (int)_goal.Height);
+            //_playerTexture = new Texture2D(_graphics.GraphicsDevice, (int)_player.Width, (int)_player.Height);
+            //_enemyTexture = new Texture2D(_graphics.GraphicsDevice, (int)_enemy.Width, (int)_enemy.Height);
         }
 
         private void RellocateTextures()

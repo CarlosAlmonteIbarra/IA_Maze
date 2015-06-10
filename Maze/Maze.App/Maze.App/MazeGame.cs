@@ -10,6 +10,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Maze.Engine.Objects;
+using Maze.Engine.Characters;
+using Protagonist = Maze.Engine.Characters.Character;
 
 namespace Maze.App
 {
@@ -22,6 +24,13 @@ namespace Maze.App
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         SpriteFont font;
+        private SpriteFont letritas;
+
+        private CharacterFactory characterFactory = new CharacterFactory();
+        private EnemyFactory enemyFactory = new EnemyFactory();
+
+        Protagonist character = new Protagonist();
+        private Enemy enemy = new Enemy();
 
         private GraphicsEngine _graphicsEngine;
         private LevelWorkflow _game;
@@ -59,8 +68,9 @@ namespace Maze.App
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            //this.graphics.ToggleFullScreen();
+            this.graphics.ToggleFullScreen();
             font = Content.Load<SpriteFont>("GameFont");
+            letritas = Content.Load<SpriteFont>("Letritas");
             color = new Color(255, 255, 255);
             base.Initialize();
         }
@@ -77,7 +87,6 @@ namespace Maze.App
             _game = new LevelWorkflow(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
             _game.OnLevelFinished += this.LevelTransition;
             _game.OnGameFinished += this.ReturnToManu;
-            _graphicsEngine = new GraphicsEngine(graphics, spriteBatch, _game.CurrentLevel, this.Content);
 
             Electivo = Content.Load<Texture2D>("selector");
             elige = new Rectangle(35, 40, 50, 50);
@@ -86,7 +95,7 @@ namespace Maze.App
 
             introScreen = new GameScreen(this, "Prototipo", fullScreenRectangle);
             //creditScreen = new GameScreen(this, "Creditos", fullScreenRectangle);
-            characterScreen = new GameScreen(this, "selectScreenFirst", fullScreenRectangle);
+            characterScreen = new GameScreen(this, "selectScreenFinal", fullScreenRectangle);
             //loseScreen = new GameScreen(this, "You suck!!!", fullScreenRectangle);
             //winScreen = new GameScreen(this, "You win!!!", fullScreenRectangle);
             //protoScreen = new GameScreen(this, "FONDO COMPLETO PROTOMAN", fullScreenRectangle);
@@ -126,9 +135,9 @@ namespace Maze.App
                 {
                     elige.X += 2;
 
-                    if (elige.X >= 750)
+                    if (elige.X >= 672)
                     {
-                        elige.X = 750;
+                        elige.X = 672;
                         elige.X -= 2;
                     }
                 }
@@ -146,7 +155,7 @@ namespace Maze.App
                 {
                     elige.X -= 2;
 
-                    if (elige.X == 1)
+                    if (elige.X <= 1)
                     {
                         elige.X = 1;
                         elige.X += 2;
@@ -162,18 +171,99 @@ namespace Maze.App
                         elige.Y += 2;
                     }
                 }
-
-                if (elige.X >= 280 & elige.X <= 370 & elige.Y >= 150 & elige.Y <= 250 &
-                    Keyboard.GetState().IsKeyDown(Keys.Enter))
+                #region Primera Fila
+                if (elige.X >= 105 & elige.X <= 129 & elige.Y >= 70 & elige.Y <= 80)
                 {
-                    gameState = GameStates.GameScreen;
+                    character = characterFactory.CreateCharacter("carlita");
                 }
-
-                if (elige.X >= 500 & elige.X <= 670 & elige.Y >= 150 & elige.Y <= 250 &
-                    Keyboard.GetState().IsKeyDown(Keys.Enter))
+                if (elige.X >= 179 & elige.X <= 201 & elige.Y >= 70 & elige.Y <= 80)
                 {
-                    gameState = GameStates.CreditScreen;
+                    character = characterFactory.CreateCharacter("carlos");
                 }
+                if (elige.X >= 251 & elige.X <= 273 & elige.Y >= 70 & elige.Y <= 80)
+                {
+                    character = characterFactory.CreateCharacter("diaz");
+                }
+                if (elige.X >= 325 & elige.X <= 347 & elige.Y >= 70 & elige.Y <= 80)
+                {
+                    character = characterFactory.CreateCharacter("erika");
+                }
+                if (elige.X >= 393 & elige.X <= 419 & elige.Y >= 70 & elige.Y <= 80)
+                {
+                    character = characterFactory.CreateCharacter("felipe");
+                }
+                if (elige.X >= 469 & elige.X <= 491 & elige.Y >= 70 & elige.Y <= 80)
+                {
+                    character = characterFactory.CreateCharacter("ficachi");
+                }
+                if (elige.X >= 539 & elige.X <= 565 & elige.Y >= 70 & elige.Y <= 80)
+                {
+                    character = characterFactory.CreateCharacter("george");
+                }
+                #endregion
+                #region Segunda Fila
+                if (elige.X >= 105 & elige.X <= 129 & elige.Y >= 130 & elige.Y <= 140)
+                {
+                    character = characterFactory.CreateCharacter("ivansini");
+                }
+                if (elige.X >= 179 & elige.X <= 201 & elige.Y >= 130 & elige.Y <= 140)
+                {
+                    character = characterFactory.CreateCharacter("jose");
+                }
+                if (elige.X >= 251 & elige.X <= 273 & elige.Y >= 130 & elige.Y <= 140)
+                {
+                    character = characterFactory.CreateCharacter("manny");
+                }
+                if (elige.X >= 325 & elige.X <= 347 & elige.Y >= 130 & elige.Y <= 140)
+                {
+                    character = characterFactory.CreateCharacter("martin");
+                }
+                if (elige.X >= 393 & elige.X <= 419 & elige.Y >= 130 & elige.Y <= 140)
+                {
+                    character = characterFactory.CreateCharacter("omar");
+                }
+                if (elige.X >= 469 & elige.X <= 491 & elige.Y >= 130 & elige.Y <= 140)
+                {
+                    character = characterFactory.CreateCharacter("oscar");
+                }
+                if (elige.X >= 539 & elige.X <= 565 & elige.Y >= 130 & elige.Y <= 140)
+                {
+                    character = characterFactory.CreateCharacter("sarita");
+                }
+                #endregion
+                #region Tercera Fila
+                if (elige.X >= 179 & elige.X <= 201 & elige.Y >= 190 & elige.Y <= 200)
+                {
+                    character = characterFactory.CreateCharacter("stephania");
+                }
+                if (elige.X >= 251 & elige.X <= 273 & elige.Y >= 190 & elige.Y <= 200)
+                {
+                    character = characterFactory.CreateCharacter("chavakane");
+                }
+                if (elige.X >= 325 & elige.X <= 347 & elige.Y >= 190 & elige.Y <= 200)
+                {
+                    character = characterFactory.CreateCharacter("luz");
+                }
+                if (elige.X >= 393 & elige.X <= 419 & elige.Y >= 190 & elige.Y <= 200)
+                {
+                    character = characterFactory.CreateCharacter("shelby");
+                }
+                if (elige.X >= 469 & elige.X <= 491 & elige.Y >= 190 & elige.Y <= 200)
+                {
+                    character = characterFactory.CreateCharacter("turi");
+                }
+                #endregion
+                //if (elige.X >= 280 & elige.X <= 370 & elige.Y >= 150 & elige.Y <= 250 &
+                //    Keyboard.GetState().IsKeyDown(Keys.Enter))
+                //{
+                //    gameState = GameStates.GameScreen;
+                //}
+
+                //if (elige.X >= 500 & elige.X <= 670 & elige.Y >= 150 & elige.Y <= 250 &
+                //    Keyboard.GetState().IsKeyDown(Keys.Enter))
+                //{
+                //    gameState = GameStates.CreditScreen;
+                //}
 
             }
 
@@ -206,7 +296,11 @@ namespace Maze.App
                 case GameStates.CharacterScreen:
                     if (CurrentState.IsKeyUp(Keys.Enter) && PreviousState.IsKeyDown(Keys.Enter))
                     {
-                        gameState = GameStates.GameScreen;
+                        if (character.Name != null)
+                        {
+                            _graphicsEngine = new GraphicsEngine(graphics, spriteBatch, _game.CurrentLevel, this.Content, character, enemy);
+                            gameState = GameStates.GameScreen;
+                        }
                     }
                     break;
             }
@@ -243,6 +337,14 @@ namespace Maze.App
 
                 spriteBatch.Begin();
                 spriteBatch.Draw(Electivo, elige, Color.White);
+                if (character.Body_AssetName != null)
+                {
+                    spriteBatch.Draw(Content.Load<Texture2D>(character.Body_AssetName),
+                        new Rectangle(105, 260, 120, 143), Color.White);
+                    spriteBatch.DrawString(letritas, character.Name, new Vector2(75,410),color);
+                }
+                spriteBatch.DrawString(font, elige.X.ToString(), new Vector2(10, 100), color);
+                spriteBatch.DrawString(font, elige.Y.ToString(), new Vector2(10, 150), color);
                 spriteBatch.End();
             }
             if (gameState == GameStates.GameScreen)
@@ -258,9 +360,17 @@ namespace Maze.App
 
         private void LevelTransition(EndResult result)
         {
-            // reproducir sonido de la estrellita
+            //Reproducir sonido de estrellita
             Delay(300);
-            _graphicsEngine.SetGameObjects(_game.CurrentLevel, this.Content);
+            if (result == EndResult.CpuWon)
+            {
+                
+            }
+            else if (result == EndResult.PlayerWon)
+            {
+                
+            }
+            _graphicsEngine.SetGameObjects(_game.CurrentLevel, this.Content, character, enemy);
         }
 
         private void ReturnToManu(EndResult result)
