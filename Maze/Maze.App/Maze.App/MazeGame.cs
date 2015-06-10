@@ -103,7 +103,7 @@ namespace Maze.App
             //creditScreen = new GameScreen(this, "Creditos", fullScreenRectangle);
             characterScreen = new GameScreen(this, "selectScreenFinal", fullScreenRectangle);
             //loseScreen = new GameScreen(this, "You suck!!!", fullScreenRectangle);
-            //winScreen = new GameScreen(this, "You win!!!", fullScreenRectangle);
+            winScreen = new GameScreen(this, "congratulations", fullScreenRectangle);
             //protoScreen = new GameScreen(this, "FONDO COMPLETO PROTOMAN", fullScreenRectangle);
             
             // TODO: use this.Content to load your game content here
@@ -330,6 +330,13 @@ namespace Maze.App
                         gameState = GameStates.GameScreen;
                     }
                     break;
+                case GameStates.WinScreen:
+                    if (CurrentState.IsKeyUp(Keys.Enter) && PreviousState.IsKeyDown(Keys.Enter))
+                    {
+                        this.Exit();
+                        gameState = GameStates.CharacterScreen;
+                    }
+                    break;
 
             }
 
@@ -393,6 +400,13 @@ namespace Maze.App
                 spriteBatch.Draw(memeScreen.ScreenTexture, memeScreen.ScreenFrame, Color.White);
                 spriteBatch.End();
             }
+
+            if (gameState == GameStates.WinScreen)
+            {
+                spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.NonPremultiplied);
+                spriteBatch.Draw(winScreen.ScreenTexture, winScreen.ScreenFrame, Color.White);
+                spriteBatch.End();
+            }
             // TODO: Add your drawing code here
 
             base.Draw(gameTime);
@@ -439,6 +453,7 @@ namespace Maze.App
 
         private void ReturnToManu(EndResult result)
         {
+            MediaPlayer.Play(Content.Load<Song>("sounds\\Congratulations!"));
             gameState = GameStates.WinScreen;
         }
 
