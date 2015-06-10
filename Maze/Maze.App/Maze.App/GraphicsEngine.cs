@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mime;
 using System.Text;
 using Maze.Engine.Objects;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Maze.Engine;
 
@@ -20,21 +22,23 @@ namespace Maze.App
         private Color[] _playerColor, _enemyColor, _cellColor;
         private Vector2 _playerPos, _enemyPos, _cellPos;
 
-        public GraphicsEngine(GraphicsDeviceManager gdManager, SpriteBatch spriteBatch, GameEnvironment ge)
+        public GraphicsEngine(GraphicsDeviceManager gdManager, SpriteBatch spriteBatch, GameEnvironment ge, ContentManager cm)
         {
             _graphics = gdManager;
             _spriteBatch = spriteBatch;
-            SetGameObjects(ge);
+            SetGameObjects(ge, cm);
         }
 
-        public void SetGameObjects(GameEnvironment ge)
+        public void SetGameObjects(GameEnvironment ge, ContentManager cm)
         {
             _player = ge.Player;
             _enemy = ge.Enemy;
             _walls = ge.Walls;
 
-            _playerTexture = new Texture2D(_graphics.GraphicsDevice, (int)_player.Width, (int)_player.Height);
-            _enemyTexture = new Texture2D(_graphics.GraphicsDevice, (int)_enemy.Width, (int)_enemy.Height);
+            _playerTexture = cm.Load<Texture2D>("Characters\\Felipe\\felipeFace");
+            _enemyTexture = cm.Load<Texture2D>("Characters\\Adan\\adanFace");
+            //_playerTexture = new Texture2D(_graphics.GraphicsDevice, (int)_player.Width, (int)_player.Height);
+            //_enemyTexture = new Texture2D(_graphics.GraphicsDevice, (int)_enemy.Width, (int)_enemy.Height);
 
             _playerColor = new Color[_playerTexture.Width * _playerTexture.Height];
             _enemyColor = new Color[_enemyTexture.Width * _enemyTexture.Height];
@@ -44,8 +48,8 @@ namespace Maze.App
 
             _playerPos = new Vector2(_player.X, _player.Y);
             _enemyPos = new Vector2(_enemy.X, _enemy.Y);
-            _playerTexture.SetData(_playerColor);
-            _enemyTexture.SetData(_enemyColor);
+            //_playerTexture.SetData(_playerColor);
+            //_enemyTexture.SetData(_enemyColor);
         }
 
         private void RellocateTextures()
@@ -78,8 +82,8 @@ namespace Maze.App
         {
             DrawCells();
             RellocateTextures();
-            _spriteBatch.Draw(_playerTexture, _playerPos, Color.White);
-            _spriteBatch.Draw(_enemyTexture, _enemyPos, Color.White);
+            _spriteBatch.Draw(_playerTexture, new Rectangle((int)_playerPos.X, (int)_playerPos.Y,(int)_player.Width,(int)_player.Height), Color.White);
+            _spriteBatch.Draw(_enemyTexture, new Rectangle((int)_enemyPos.X, (int)_enemyPos.Y, (int)_enemy.Width, (int)_enemy.Height), Color.White);
         }
     }
 }

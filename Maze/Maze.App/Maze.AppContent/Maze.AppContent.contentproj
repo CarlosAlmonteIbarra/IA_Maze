@@ -136,11 +136,6 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Characters\Fabian\fabianMeme.jpg">
-      <Name>fabianMeme</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
     <Compile Include="Characters\Felipe\felipeFace.png">
       <Name>felipeFace</Name>
       <Importer>TextureImporter</Importer>
@@ -178,16 +173,6 @@
     </Compile>
     <Compile Include="Characters\Ivansini\ivanSelect.png">
       <Name>ivanSelect</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Characters\Jose\joseFace.png">
-      <Name>joseFace</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Characters\Jose\joseSelect.png">
-      <Name>joseSelect</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -241,16 +226,6 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Characters\Ricky\rickyFace.png">
-      <Name>rickyFace</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Characters\Ricky\rickyMeme.jpg">
-      <Name>rickyMeme</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
     <Compile Include="Characters\Sarita\saritaFace.png">
       <Name>saritaFace</Name>
       <Importer>TextureImporter</Importer>
@@ -298,13 +273,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Characters\Fabian\fabianFace.png">
-      <Name>fabianFace</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Mario_Bros.wav">
       <Name>Mario_Bros</Name>
       <Importer>WavImporter</Importer>
@@ -331,6 +299,42 @@
   <ItemGroup>
     <Compile Include="selectScreenSecond.png">
       <Name>selectScreenSecond</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Characters\Fabián\fabianFace.png">
+      <Name>fabianFace</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Characters\Fabián\fabianMeme.jpg">
+      <Name>fabianMeme</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Characters\José\joseFace.png">
+      <Name>joseFace</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Characters\José\joseSelect.png">
+      <Name>joseSelect</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Characters\Ricky Martin\rickyFace.png">
+      <Name>rickyFace</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Characters\Ricky Martin\rickyMeme.jpg">
+      <Name>rickyMeme</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

@@ -27,7 +27,7 @@ namespace Maze.Engine
 
         public static void AddSong(Microsoft.Xna.Framework.Game game, string path)
         {
-            _songsList.Add(game.Content.Load<Song>("Music\\" + path));
+            _songsList.Add(game.Content.Load<Song>(path));
         }
 
         public void Play()

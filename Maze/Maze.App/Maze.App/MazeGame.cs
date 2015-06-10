@@ -76,7 +76,7 @@ namespace Maze.App
             _game = new LevelWorkflow(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
             _game.OnLevelFinished += this.LevelTransition;
             _game.OnGameFinished += this.ReturnToManu;
-            _graphicsEngine = new GraphicsEngine(graphics, spriteBatch, _game.CurrentLevel);
+            _graphicsEngine = new GraphicsEngine(graphics, spriteBatch, _game.CurrentLevel, this.Content);
 
             Electivo = Content.Load<Texture2D>("selector");
             elige = new Rectangle(35, 40, 50, 50);
@@ -251,7 +251,7 @@ namespace Maze.App
 
         private void LevelTransition()
         {
-            _graphicsEngine.SetGameObjects(_game.CurrentLevel);
+            _graphicsEngine.SetGameObjects(_game.CurrentLevel, this.Content);
         }
 
         private void ReturnToManu()
